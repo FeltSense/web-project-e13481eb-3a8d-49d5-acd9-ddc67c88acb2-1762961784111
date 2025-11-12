@@ -1,0 +1,86 @@
+{
+  "componentsToGenerate": [
+    "Navigation",
+    "HeroCarousel",
+    "PropertyCard",
+    "PropertyGrid",
+    "SearchFilters",
+    "FeaturedListings",
+    "Testimonials",
+    "AgentProfiles",
+    "ContactForm",
+    "PricingTiers",
+    "NeighborhoodGuides",
+    "MortgageCalculator",
+    "ImageGallery",
+    "Footer"
+  ],
+  "estimatedChallenges": [
+    {
+      "component": "HeroCarousel",
+      "challenge": "Auto-advancing carousel with smooth transitions and touch/swipe support",
+      "mitigation": "Use useState for active slide index with useEffect for auto-advance. Implement prev/next handlers and indicator dots. CSS transitions for smooth slides."
+    },
+    {
+      "component": "SearchFilters",
+      "challenge": "Multiple filter types (dropdowns, sliders, checkboxes) with state management",
+      "mitigation": "Single state object for all filters. Controlled inputs with onChange handlers. Clear filters functionality. May need 'use client' directive."
+    },
+    {
+      "component": "PropertyCard",
+      "challenge": "Responsive grid layout with high-quality images and hover effects",
+      "mitigation": "CSS Grid with auto-fit columns. Next.js Image component for optimization. Hover transforms and overlays with CSS."
+    },
+    {
+      "component": "ImageGallery",
+      "challenge": "Lightbox modal with full-screen images and navigation",
+      "mitigation": "Modal component with state for active image. Navigation arrows and thumbnail strip. Escape key and outside click to close. May need 'use client'."
+    },
+    {
+      "component": "MortgageCalculator",
+      "challenge": "Real-time calculations with form inputs and formatted output",
+      "mitigation": "Controlled inputs with number formatting. UseEffect for calculation updates. Clear display of monthly payment and total cost. Requires 'use client'."
+    },
+    {
+      "component": "ContactForm",
+      "challenge": "Form validation, budget range selector, property interest dropdown",
+      "mitigation": "Controlled form with validation state. Custom select components. Email/phone format validation. Success message on submit."
+    },
+    {
+      "component": "PricingTiers",
+      "challenge": "Three-column responsive layout with feature comparison",
+      "mitigation": "Flexbox/Grid layout that stacks on mobile. Highlighted 'popular' tier. Feature checkmarks with conditional rendering."
+    },
+    {
+      "component": "AgentProfiles",
+      "challenge": "Professional cards with photos, contact info, and expertise areas",
+      "mitigation": "Grid layout with Image components. Contact buttons with mailto/tel links. Expertise tags."
+    },
+    {
+      "component": "NeighborhoodGuides",
+      "challenge": "Interactive neighborhood cards with images and statistics",
+      "mitigation": "Grid layout with hover effects. Stat displays. Links to filtered portfolio page."
+    },
+    {
+      "component": "Testimonials",
+      "challenge": "Carousel or grid of client stories with property context",
+      "mitigation": "Simple carousel or staggered grid. Client photos, quotes, and property details. Star ratings."
+    }
+  ],
+  "fixerContext": {
+    "expectedStructure": "Simple Next.js app. Components in components/ folder at root. app/page.tsx imports from ../components/. Each page in app/[pagename]/page.tsx imports same components.",
+    "importPaths": "Use '../components/ComponentName' from app/page.tsx. Use '../../components/ComponentName' from app/[pagename]/page.tsx.",
+    "commonIssues": [
+      "Missing 'use client' directive on interactive components (carousel, filters, calculator, lightbox)",
+      "Import path mismatches - ensure relative paths are correct based on file location",
+      "Image optimization - use Next.js Image component with width/height",
+      "Carousel state management - useState for current slide, useEffect for auto-advance with cleanup",
+      "Filter state - may need complex object state for multiple filter types",
+      "Form validation - controlled inputs with validation feedback",
+      "Modal/lightbox - portal rendering and body scroll lock",
+      "Responsive images - srcSet and sizes for different screen sizes",
+      "CSS conflicts - use unique class names or CSS modules",
+      "Navigation active state - track current page for styling"
+    ]
+  }
+}
